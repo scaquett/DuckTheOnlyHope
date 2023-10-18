@@ -4,14 +4,16 @@ import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.ModifiersDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import java.util.Arrays;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Willian Scaquett
  */
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "zombie")
 public class Zombie extends Host {

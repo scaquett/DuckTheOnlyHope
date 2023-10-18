@@ -14,7 +14,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class ZombieDTO {
+public class HostDTO {
 
     int age;
     Sex sex;

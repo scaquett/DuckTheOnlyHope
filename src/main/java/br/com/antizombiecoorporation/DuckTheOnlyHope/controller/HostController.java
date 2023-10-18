@@ -1,11 +1,10 @@
 package br.com.antizombiecoorporation.DuckTheOnlyHope.controller;
 
-import br.com.antizombiecoorporation.DuckTheOnlyHope.business.ZombieBO;
-import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.ZombieDTO;
+import br.com.antizombiecoorporation.DuckTheOnlyHope.business.HostBO;
+import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.HostDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HostController {
 
     @Autowired
-    ZombieBO zombieBO;
+    HostBO hostBO;
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody ZombieDTO zombieDTO) {
+    public ResponseEntity<?> add(@RequestBody HostDTO hostDTO) {
         try {
-            return ResponseEntity.ok(zombieBO.add(zombieDTO));
+            return ResponseEntity.ok(hostBO.add(hostDTO));
         } catch (IllegalArgumentException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.badRequest().body(e.getMessage());

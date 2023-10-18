@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@Entity(name = "zombie")
+@Entity(name = "host")
 public class Host {
 
     @Id
