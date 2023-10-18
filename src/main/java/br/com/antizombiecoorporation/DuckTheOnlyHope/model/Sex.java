@@ -7,8 +7,10 @@ import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.ModifiersDTO;
  * @author Willian Scaquett
  */
 public enum Sex {
-    MALE("Masculino", 12, 10, 8),
-    FEMALE("Feminino", 8, 10, 12),
+
+    //thanks to testosterone, masculine people are stronger. But thanks to Hecate's magic, feminine people are more intelligent (be careful!)
+    MALE("Masculino", 16, 0, 11),
+    FEMALE("Feminino", 11, 0, 16),
     UNKNOWN("Não informado", 0, 0, 0);
 
     private final String name;

@@ -24,8 +24,8 @@ public enum BloodType {
         this.name = name;
         //unexpected values, like genetics does
         this.modifiersDTO = new ModifiersDTO(
-                MathUtil.getRandomModifier(16, this.name.hashCode()),
-                MathUtil.getRandomModifier(16, this.name.hashCode()),
+                MathUtil.getRandomModifier(20, this.name.hashCode()),
+                MathUtil.getRandomModifier(20, this.name.hashCode()),
                 MathUtil.getRandomModifier(20, this.name.hashCode())
         );
     }

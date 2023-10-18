@@ -8,18 +8,19 @@ import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.ModifiersDTO;
  */
 public enum Game {
 
-    COUNTER_STRIKE("Counter Strike", 5, 8, 10),
-    MINECRAFT("Minecraft", 6, 10, 12),
-    FORTNITE("Fortnite", 4, 10, 10),
-    THE_WITCHER("The Witcher", 10, 7, 12),
-    VALORANT("Valorant", 8, 8, 8),
-    ASSASSINS_CREED("Assassin's Creed", 9, 12, 9),
-    WORLD_OF_WARCRAFT("World of Warcraft", 11, 8, 12),
-    FIFA("FIFA", 10, 12, 5),
-    LEAGUE_OF_LEGENDS("League of Legends", 2, 10, 11),
-    DOTA("Dota", 4, 9, 12),
-    ROCKET_LEAGUE("Rocket League", 5, 8, 8),
-    OUTRO("Outro - pouco relevante", 2, 8, 12);
+    //the more difficult, faster and creative the game, the more intelligence
+    COUNTER_STRIKE("Counter Strike", 0, 0, 12),
+    MINECRAFT("Minecraft", 0, 0, 14),
+    FORTNITE("Fortnite", 0, 0, 10),
+    THE_WITCHER("The Witcher", 0, 0, 10),
+    VALORANT("Valorant", 0, 0, 8),
+    ASSASSINS_CREED("Assassin's Creed", 0, 0, 10),
+    WORLD_OF_WARCRAFT("World of Warcraft", 0, 0, 16),
+    FIFA("FIFA", 0, 0, 8),
+    LEAGUE_OF_LEGENDS("League of Legends", 0, 0, 15),
+    DOTA("Dota", 0, 0, 16),
+    ROCKET_LEAGUE("Rocket League", 0, 0, 10),
+    OUTRO("Outro - pouco relevante", 0, 0, 12);
 
     private final String name;
     private final ModifiersDTO modifiersDTO;

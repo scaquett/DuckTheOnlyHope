@@ -36,8 +36,7 @@ public class Zombie extends Host {
         for (ModifiersDTO modifiersDTO : Arrays.asList(
                 this.getModifiersFromAge(super.getAge()),
                 super.getSex().getModifiersDTO(),
-                this.getModifiersFromWeight(super.getWeight()),
-                this.getModifiersFromHeight(super.getHeight()),
+                this.getModifiersFromWeightAndHeight(super.getWeight(), super.getHeight()),
                 super.getBloodType().getModifiersDTO(),
                 super.getMusicalGenre().getModifiersDTO(),
                 super.getSport().getModifiersDTO(),
@@ -49,58 +48,47 @@ public class Zombie extends Host {
     }
 
     private ModifiersDTO getModifiersFromAge(Integer age) {
+        //time brings wisdom, but it also brings back pain
         if (age >= 0 && age <= 3) {
-            return new ModifiersDTO(2, 5, 2);
+            return new ModifiersDTO(3, 7, 3);
         } else if (age >= 4 && age <= 12) {
-            return new ModifiersDTO(5, 11, 6);
+            return new ModifiersDTO(10, 15, 8);
         } else if (age >= 13 && age <= 17) {
-            return new ModifiersDTO(9, 12, 8);
+            return new ModifiersDTO(15, 16, 11);
         } else if (age >= 18 && age <= 30) {
-            return new ModifiersDTO(12, 10, 10);
+            return new ModifiersDTO(20, 15, 13);
         } else if (age >= 31 && age <= 45) {
-            return new ModifiersDTO(11, 9, 11);
+            return new ModifiersDTO(19, 13, 15);
         } else if (age >= 46 && age <= 65) {
-            return new ModifiersDTO(10, 8, 12);
+            return new ModifiersDTO(17, 11, 16);
         } else if (age >= 66) {
-            return new ModifiersDTO(8, 5, 11);
+            return new ModifiersDTO(10, 6, 14);
         } else {
             throw new IllegalArgumentException(age + " is not a valid value for age");
         }
     }
 
-    private ModifiersDTO getModifiersFromWeight(Float weight) {
-        //weigth does not affect intelligence
-        if (weight >= 1 && weight <= 40) {
-            return new ModifiersDTO(3, 5, 0);
-        } else if (weight >= 41 && weight <= 60) {
-            return new ModifiersDTO(6, 10, 0);
-        } else if (weight >= 61 && weight <= 80) {
-            return new ModifiersDTO(9, 12, 0);
-        } else if (weight >= 81 && weight <= 100) {
-            return new ModifiersDTO(11, 9, 0);
-        } else if (weight >= 101) {
-            return new ModifiersDTO(12, 7, 0);
+    private ModifiersDTO getModifiersFromWeightAndHeight(Float weight, Float height) {
+        Float bmi = weight / (height * 2);
+        //weigth and height do not affect intelligence
+        if (bmi < 18.5) {
+            return new ModifiersDTO(6, 14, 0);
+        } else if (bmi > 18.5 && bmi < 24.9) {
+            return new ModifiersDTO(16, 20, 0);
+        } else if (bmi > 25.0 && bmi < 29.9) {
+            return new ModifiersDTO(16, 16, 0);
+        } else if (bmi > 30.0 && bmi < 34.9) {
+            return new ModifiersDTO(15, 14, 0);
+        } else if (bmi > 35.0 && bmi < 39.9) {
+            return new ModifiersDTO(15, 11, 0);
+        } else if (bmi >= 40) {
+            return new ModifiersDTO(13, 9, 0);
         } else {
-            throw new IllegalArgumentException(weight + " is not a valid value for weight");
-        }
-    }
-
-    private ModifiersDTO getModifiersFromHeight(Float height) {
-        //heigth does not affect intelligence
-        if (height >= 0.01 && height <= 1) {
-            return new ModifiersDTO(3, 5, 0);
-        } else if (height >= 1.01 && height <= 1.4) {
-            return new ModifiersDTO(6, 10, 0);
-        } else if (height >= 1.41 && height <= 1.6) {
-            return new ModifiersDTO(9, 12, 0);
-        } else if (height >= 1.61 && height <= 1.8) {
-            return new ModifiersDTO(11, 9, 0);
-        } else if (height >= 1.81 && height <= 2) {
-            return new ModifiersDTO(11, 9, 0);
-        } else if (height >= 2.01) {
-            return new ModifiersDTO(12, 7, 0);
-        } else {
-            throw new IllegalArgumentException(height + " is not a valid value for height");
+            if (weight < 0) {
+                throw new IllegalArgumentException(weight + " is not a valid value for weight");
+            } else {
+                throw new IllegalArgumentException(height + " is not a valid value for height");
+            }
         }
     }
 

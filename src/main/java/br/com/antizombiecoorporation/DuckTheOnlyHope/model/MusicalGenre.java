@@ -8,15 +8,17 @@ import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.ModifiersDTO;
  */
 public enum MusicalGenre {
 
-    POP("Pop", 5, 12, 9),
-    ROCK("Rock", 6, 10, 10),
-    PAGODE("Pagode", 7, 5, 9),
-    SERTANEJO("Sertanejo", 8, 6, 9),
-    HIP_HOP_RAP("Hip-Hop/Rap", 9, 10, 10),
-    ELETRONICA("Eletrônica", 4, 9, 8),
-    FUNK("Funk", 11, 9, 8),
-    METAL("Metal", 10, 8, 9),
-    ESQUIZITICE("Demais gêneros estranhos", 5, 2, 12);
+    //musicalGenre does not affect strength (but it affects speed, based on the speed of songs in the genre)
+    //and intelligence was calculated by the quantity of instruments that songs of the genre usually have (don't ask me why)
+    POP("Pop", 0, 16, 12),
+    ROCK("Rock", 0, 16, 16),
+    PAGODE("Pagode", 0, 9, 14),
+    SERTANEJO("Sertanejo", 0, 13, 10),
+    HIP_HOP_RAP("Hip-Hop/Rap", 0, 20, 8),
+    ELETRONICA("Eletrônica", 0, 11, 6),
+    FUNK("Funk", 0, 13, 5),
+    METAL("Metal", 0, 20, 16),
+    ESQUIZITICE("Demais gêneros estranhos", 0, 2, 16);
 
     private final String name;
     private final ModifiersDTO modifiersDTO;
