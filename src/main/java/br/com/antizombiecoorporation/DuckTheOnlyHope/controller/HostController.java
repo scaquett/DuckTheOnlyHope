@@ -17,16 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping("/zombie")
-public class ZombieController {
+@RequestMapping("/host")
+public class HostController {
 
     @Autowired
     ZombieBO zombieBO;
 
-    @GetMapping("/getAll")
-    public ResponseEntity<?> getAll() {
+    @PostMapping("/add")
+    public ResponseEntity<?> add(@RequestBody ZombieDTO zombieDTO) {
         try {
-            return ResponseEntity.ok(zombieBO.getAll());
+            return ResponseEntity.ok(zombieBO.add(zombieDTO));
+        } catch (IllegalArgumentException e) {
+            log.error(e.getMessage(), e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.internalServerError().build();
