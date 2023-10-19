@@ -14,7 +14,7 @@ public enum Sport {
     FUTEBOL("Futebol", 12, 20, 9),
     BASQUETE("Basquete", 13, 20, 8),
     VOLEI("Vôlei", 10, 10, 14),
-    LUTA("Luta", 16, 12, 12),
+    LUTA("Luta", 16, 10, 12),
     ATLETISMO("Atletismo", 14, 18, 7),
     ESPORTS("eSports", 0, 0, 16),
     NADA("Nada", 0, 0, 0);

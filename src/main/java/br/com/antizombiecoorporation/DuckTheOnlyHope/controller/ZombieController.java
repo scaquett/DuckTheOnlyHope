@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +27,19 @@ public class ZombieController {
     public ResponseEntity<?> getAll() {
         try {
             return ResponseEntity.ok(zombieBO.getAll());
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/getCombatStrategy/{zombieId}")
+    public ResponseEntity<?> getAll(@PathVariable Long zombieId) {
+        try {
+            return ResponseEntity.ok(zombieBO.getCombatStrategy(zombieId));
+        } catch (IllegalArgumentException e) {
+            log.error(e.getMessage(), e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.internalServerError().build();
