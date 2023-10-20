@@ -3,7 +3,7 @@ package br.com.antizombiecoorporation.DuckTheOnlyHope.business;
 import br.com.antizombiecoorporation.DuckTheOnlyHope.dto.HostDTO;
 import br.com.antizombiecoorporation.DuckTheOnlyHope.model.Zombie;
 import br.com.antizombiecoorporation.DuckTheOnlyHope.repository.ZombieRepository;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Willian Scaquett
  */
+@Slf4j
 @Service
 public class HostBO {
 
@@ -32,6 +33,8 @@ public class HostBO {
         );
 
         zombieRepository.save(zombie);
+
+        log.info("zombie id [" + zombie.getId() + "] added");
 
         return zombie;
     }

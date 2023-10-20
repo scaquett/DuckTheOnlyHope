@@ -27,13 +27,16 @@ public class HostController {
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody HostDTO hostDTO) {
         try {
+            log.info("add init", hostDTO);
             return ResponseEntity.ok(hostBO.add(hostDTO));
         } catch (IllegalArgumentException e) {
-            log.error(e.getMessage(), e);
+            log.error("something happened there", e);
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.error("something happened here", e);
             return ResponseEntity.internalServerError().build();
+        } finally {
+            log.info("add end");
         }
     }
 }

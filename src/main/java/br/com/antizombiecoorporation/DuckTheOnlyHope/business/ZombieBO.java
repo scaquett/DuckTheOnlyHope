@@ -10,6 +10,7 @@ import br.com.antizombiecoorporation.DuckTheOnlyHope.model.Zombie;
 import br.com.antizombiecoorporation.DuckTheOnlyHope.repository.ZombieRepository;
 import java.util.List;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Willian Scaquett
  */
+@Slf4j
 @Service
 public class ZombieBO {
 
@@ -24,6 +26,7 @@ public class ZombieBO {
     ZombieRepository zombieRepository;
 
     public List<ZombieDTO> getAll() {
+        log.info("returning all zombies...");
         return zombieRepository.getAll();
     }
 
@@ -31,6 +34,7 @@ public class ZombieBO {
         Optional<Zombie> optionalZombie = zombieRepository.findById(zombieId);
 
         if (optionalZombie.isPresent()) {
+            log.info("zombie found! Generating strategy...");
             Zombie zombie = optionalZombie.get();
             return new InfoToDuckDTO(
                     chooseArmor(zombie),
@@ -53,7 +57,7 @@ public class ZombieBO {
                     )
             );
         } else {
-            throw new IllegalArgumentException("No zombie found with id " + zombieId);
+            throw new IllegalArgumentException("No zombies found with id " + zombieId);
         }
     }
 

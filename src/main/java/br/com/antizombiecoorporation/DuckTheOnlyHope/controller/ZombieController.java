@@ -26,23 +26,29 @@ public class ZombieController {
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll() {
         try {
+            log.info("getAll init");
             return ResponseEntity.ok(zombieBO.getAll());
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.error("something happened", e);
             return ResponseEntity.internalServerError().build();
+        } finally {
+            log.info("getAll end");
         }
     }
 
     @GetMapping("/getCombatStrategy/{zombieId}")
     public ResponseEntity<?> getAll(@PathVariable Long zombieId) {
         try {
+            log.info("getCombatStrategy init");
             return ResponseEntity.ok(zombieBO.getCombatStrategy(zombieId));
         } catch (IllegalArgumentException e) {
-            log.error(e.getMessage(), e);
+            log.error("something happened there", e);
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.error("something happened here", e);
             return ResponseEntity.internalServerError().build();
+        } finally {
+            log.info("getCombatStrategy end");
         }
     }
 }
