@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.antizombiecoorporation</groupId>
     <artifactId>DuckTheOnlyHope</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <name>DuckTheOnlyHope</name>
     <description>API para catalogar zumbis e ajudar patos a combatê-los.</description>
     <properties>
